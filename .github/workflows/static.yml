@@ -32,7 +32,7 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Get dependencies
         run: |
-          sudo apt-get install -y python3-sphinx
+          sudo apt-get install -y python3-sphinx python3-apt
       - name: Setup environment, get more dependencies, build documentation
         run: |
           git clone https://github.com/dboddie/craft-parts.git
