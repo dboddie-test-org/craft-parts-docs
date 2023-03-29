@@ -48,6 +48,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: 'craft-parts/docs/_build/html'
+          repo: $GITHUB_REPOSITORY_OWNER/temp
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
