@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}/temp
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -43,11 +43,12 @@ jobs:
           sed -ri 's/python-apt/#python-apt/' docs/requirements.txt
           pip3 install -r requirements-dev.txt
           make docs
-          ls docs/_build
+          mkdir docs/_build/export
+          mv docs/_build/html docs/_build/export/$GITHUB_REF_NAME
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'craft-parts/docs/_build/html'
+          path: 'craft-parts/docs/_build/export'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
