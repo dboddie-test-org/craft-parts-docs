@@ -36,6 +36,7 @@ jobs:
       - name: Setup environment, get more dependencies, build documentation
         run: |
           git clone -b $GITHUB_REF_NAME https://github.com/dboddie/craft-parts.git
+          git branch
           cd craft-parts
           ./tools/freeze-requirements.sh
           python3 -m venv venv
